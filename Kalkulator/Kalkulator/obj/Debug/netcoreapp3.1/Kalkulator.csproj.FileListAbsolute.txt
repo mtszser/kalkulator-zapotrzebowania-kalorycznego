@@ -1,0 +1,13 @@
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\Kalkulator.exe
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\Kalkulator.deps.json
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\Kalkulator.runtimeconfig.json
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\Kalkulator.runtimeconfig.dev.json
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\Kalkulator.dll
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\Kalkulator.pdb
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.csprojAssemblyReference.cache
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.AssemblyInfoInputs.cache
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.AssemblyInfo.cs
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.csproj.CoreCompileInputs.cache
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.dll
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.pdb
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.genruntimeconfig.cache
