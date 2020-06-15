@@ -7,19 +7,19 @@ namespace Kalkulator
     {
         static void BMI()
         {
-            double waga;
-            double wzrost;
+            double weight;
+            double height;
             string menu = "";
             double BMI;
-            string kwalifikacja = "";
+            string info = "";
 
             // Poczatek i podstawowe informacje
 
             Console.WriteLine("\nKALKULATOR BMI!");
             Console.WriteLine("Kalkulator BMI sprawdza proporcje miedzy Twoja masa ciala, a wzrostem i określa czy waga jest prawidłowa.");
             Console.WriteLine("Licznik BMI podaje wynik według podstawowej kwalifikacji dla dorosłych mężczyzn i kobiet." + "\nChcesz wiedzieć więcej? Jeśli tak, wpisz (T), jeśli nie, wpisz cokolwiek lub wciśnij (ENTER)");
-            kwalifikacja = Console.ReadLine().ToUpper();
-            if (kwalifikacja == "T")
+            info = Console.ReadLine().ToUpper();
+            if (info == "T")
             {
                 Console.WriteLine("Niedowaga: poniżej 18,5" + "\nPrawidłowa masa ciała: 18,5-24,9" + "\nNadwaga: 25,0-29,9" + "\notyłość I stopnia: 30,0-34,9" + "\notyłość II stopnia: 35,0-39,9"
                     + "\notyłość III stopnia: powyżej 40");
@@ -31,14 +31,14 @@ namespace Kalkulator
             do
             {
                 Console.WriteLine("Wpisz swoj wzrost w (cm): ");
-                wzrost = Double.Parse(Console.ReadLine());
+                height = Double.Parse(Console.ReadLine());
                 Console.WriteLine("Wpisz swoja wage w (kg):");
-                waga = Double.Parse(Console.ReadLine());
+                weight = Double.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nPODSUMOWANIE:");
                 Console.WriteLine("-------------");
 
-                Console.WriteLine("Twoj wzrost wynosi " + Math.Round(wzrost, 1) + " cm, a waga " + Math.Round(waga, 1) + "kg. Czy wszystko sie zgadza?");
+                Console.WriteLine("Twoj wzrost wynosi " + Math.Round(height, 1) + " cm, a waga " + Math.Round(weight, 1) + "kg. Czy wszystko sie zgadza?");
                 Console.WriteLine("Jesli chcesz wpisac swoje dane od poczatku wpisz (N), jesli nie, nacisnij (ENTER)");
                 menu = Console.ReadLine().ToUpper();
 
@@ -46,8 +46,8 @@ namespace Kalkulator
 
             // Obliczenia BMI
 
-            wzrost = wzrost / 100;
-            BMI = waga / Math.Pow(wzrost, 2);
+            height = height / 100;
+            BMI = weight / Math.Pow(height, 2);
 
             // Określanie BMI
 
@@ -79,12 +79,12 @@ namespace Kalkulator
 
         static void BMR()
         {
-            double waga;
-            int wiek;
-            double wzrost;
-            string plec;
+            double weight;
+            int age;
+            double height;
+            string sex;
             string menu = "";
-            double aktywnosc = 0;
+            double activity = 0;
             double BMR = 0;
             double TDEE = 0;
             
@@ -102,33 +102,33 @@ namespace Kalkulator
             do
             {
                 Console.WriteLine("\nPodaj swoja plec, (M) jako mezczyzna lub (K) jako kobieta: ");
-                plec = Console.ReadLine().ToUpper();
-                if (plec == "M")
+                sex = Console.ReadLine().ToUpper();
+                if (sex == "M")
                 {
-                    plec = "mezczyzna";
+                    sex = "mezczyzna";
                 }
-                else if(plec == "K")
+                else if(sex == "K")
                 {
-                    plec = "kobieta";
+                    sex = "kobieta";
                 }
                 Console.WriteLine("Wpisz swoja wage w (kg): ");
-                waga = Double.Parse(Console.ReadLine());
+                weight = Double.Parse(Console.ReadLine());
                 Console.WriteLine("Podaj swoj wiek w (latach): ");
-                wiek = int.Parse(Console.ReadLine());
+                age = int.Parse(Console.ReadLine());
                 Console.WriteLine("Podaj swoj wzrost w (cm): ");
-                wzrost = Double.Parse(Console.ReadLine());
+                height = Double.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nPODSUMOWANIE:");
                 Console.WriteLine("-------------");
 
-                Console.WriteLine($"Twoja plec to { plec}, ważysz {waga} kg, masz {wiek} lat(a) oraz Twoj wzrost wynosi {wzrost} cm.");
+                Console.WriteLine($"Twoja plec to {sex}, ważysz {weight} kg, masz {age} lat(a) oraz Twoj wzrost wynosi {height} cm.");
                 Console.WriteLine("Czy wszystko sie zgadza? Jesli chcesz wpisac swoje dane od poczatku wpisz (N), \njeśli nie, wpisz cokolwiek lub wciśnij (ENTER)");
                 menu = Console.ReadLine().ToUpper();
 
             } while (menu == "N");
 
             // Okreslanie aktywnosci dla poszczegolnej
-            if (plec == "mezczyzna")
+            if (sex == "mezczyzna")
             {
                 do
                 {
@@ -141,33 +141,33 @@ namespace Kalkulator
                         "\n4) Przy bardzo aktywnym trybie życia(ciezka fizyczna praca/ aktywność 6-7x w tygodniu." +
                         "\n5) Przy ekstremalnie aktywnym trybie zycia(bardzo ciezka fizyczna praca / cwiczenie nawet kilka razy dziennie.");
 
-                    aktywnosc = Double.Parse(Console.ReadLine());
-                    if (aktywnosc == 1)
+                    activity = Double.Parse(Console.ReadLine());
+                    if (activity == 1)
                     {
-                        aktywnosc = 1.2;
+                        activity = 1.2;
                     }
-                    else if (aktywnosc == 2)
+                    else if (activity == 2)
                     {
-                        aktywnosc = 1.375;
+                        activity = 1.375;
                     }
-                    else if (aktywnosc == 3)
+                    else if (activity == 3)
                     {
-                        aktywnosc = 1.55;
+                        activity = 1.55;
                     }
-                    else if (aktywnosc == 4)
+                    else if (activity == 4)
                     {
-                        aktywnosc = 1.725;
+                        activity = 1.725;
                     }
-                    else if (aktywnosc == 5)
+                    else if (activity == 5)
                     {
-                        aktywnosc = 1.9;
+                        activity = 1.9;
                     }
 
                     Console.WriteLine("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N).");
                     menu = Console.ReadLine().ToUpper();
                 } while(menu == "N");
             }
-            else if (plec == "kobieta")
+            else if (sex == "kobieta")
             {
                 do
                 {
@@ -179,22 +179,22 @@ namespace Kalkulator
                         "\n3) Przy aktywnym trybie życia(średnio fizyczna praca/ aktywnosc 3-5x w tygodniu)." + 
                         "\n4) Przy bardzo aktywnym trybie życia(ciezkie cwiczenia/ aktywność 6-7x w tygodniu.");
 
-                    aktywnosc = Double.Parse(Console.ReadLine());
-                    if (aktywnosc == 1)
+                    activity = Double.Parse(Console.ReadLine());
+                    if (activity == 1)
                     {
-                        aktywnosc = 1.1;
+                        activity = 1.1;
                     }
-                    else if (aktywnosc == 2)
+                    else if (activity == 2)
                     {
-                        aktywnosc = 1.275;
+                        activity = 1.275;
                     }
-                    else if (aktywnosc == 3)
+                    else if (activity == 3)
                     {
-                        aktywnosc = 1.35;
+                        activity = 1.35;
                     }
-                    else if (aktywnosc == 4)
+                    else if (activity == 4)
                     {
-                        aktywnosc = 1.525;
+                        activity = 1.525;
                     }
 
                     Console.WriteLine("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N).");
@@ -206,13 +206,13 @@ namespace Kalkulator
             // PPM (kobiety) =  (10 x masa ciała[kg])+(6,25 x wzrost[cm])-(5 x [wiek]) – 161
             // PPM(mężczyźni) = (10 x masa ciała[kg])+(6,25 x wzrost[cm])-(5 x[wiek]) +5
 
-            if(plec == "kobieta")
+            if(sex == "kobieta")
             {
-                BMR = (10 * waga) + (6.25 * wzrost) - (5 * wiek) - 161;
+                BMR = (10 * weight) + (6.25 * height) - (5 * age) - 161;
             }
-            else if(plec == "mezczyzna")
+            else if(sex == "mezczyzna")
             {
-                BMR = (10 * waga) + (6.25 * wzrost) - (5 * wiek) + 5;
+                BMR = (10 * weight) + (6.25 * height) - (5 * age) + 5;
             }
 
             Console.WriteLine("\nA teraz oblicze Twoje BMR:");
@@ -221,7 +221,7 @@ namespace Kalkulator
             Console.WriteLine("A teraz dodam do tego wspolczynnik aktywnosci, ktory podales/as wczesniej.");
 
             // wzor na TDEE
-            TDEE = BMR * aktywnosc;
+            TDEE = BMR * activity;
 
             Console.WriteLine("\nTwoje TDEE wynosi " + Math.Round(TDEE, 2) + " kcal. \nTDEE - Jest to ilosc kalorii jaka powinienes/as spozywac w ciagu dnia zakladajac Twoja aktywnosc");
 
