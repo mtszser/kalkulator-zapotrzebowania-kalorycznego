@@ -3,77 +3,121 @@ using System.ComponentModel.Design;
 
 namespace Kalkulator
 {
+    class BMI
+    {
+        private double weight;
+        private double height;
+        private string sex;
+        private double result;
+        
+        
+
+        public double getWeight()
+        {
+            return weight;
+        }
+        public double getHeight()
+        {
+            return height;
+        }
+        public string getSex()
+        {
+            return sex;
+        }
+        public double getResult()
+        {
+            return result;
+        }
+        public void setWeight(double weight)
+        {
+            this.weight = weight;
+        }
+        public void setHeight(double height)
+        {
+            this.height = height;
+        }
+        public void setSex(string sex)
+        {
+            this.sex = sex;
+        }
+        public void setResult(double result)
+        {
+            this.result = result;
+        }
+        public string getInfo()
+        {
+            return "Niedowaga: poniżej 18,5" + "\nPrawidłowa masa ciała: 18,5-24,9" + "\nNadwaga: 25,0-29,9" + "\notyłość I stopnia: 30,0-34,9" + "\notyłość II stopnia: 35,0-39,9"
+                    + "\notyłość III stopnia: powyżej 40";
+        }
+
+    }
+
     class Program
     {
         static void BMI()
         {
-            double weight;
-            double height;
-            string menu = "";
-            double BMI;
-            string info = "";
+            BMI bmi = new BMI();
 
             // Poczatek i podstawowe informacje
 
             Console.WriteLine("\nKALKULATOR BMI!");
             Console.WriteLine("Kalkulator BMI sprawdza proporcje miedzy Twoja masa ciala, a wzrostem i określa czy waga jest prawidłowa.");
             Console.WriteLine("Licznik BMI podaje wynik według podstawowej kwalifikacji dla dorosłych mężczyzn i kobiet." + "\nChcesz wiedzieć więcej? Jeśli tak, wpisz (T), jeśli nie, wpisz cokolwiek lub wciśnij (ENTER)");
-            info = Console.ReadLine().ToUpper();
-            if (info == "T")
+            
+            if (Console.ReadLine().ToUpper() == "T")
             {
-                Console.WriteLine("Niedowaga: poniżej 18,5" + "\nPrawidłowa masa ciała: 18,5-24,9" + "\nNadwaga: 25,0-29,9" + "\notyłość I stopnia: 30,0-34,9" + "\notyłość II stopnia: 35,0-39,9"
-                    + "\notyłość III stopnia: powyżej 40");
+                Console.WriteLine(bmi.getInfo());
             }
             Console.WriteLine("---------------------------------------------------------------------------------------------------------");
 
             // Zbieranie danych na temat osoby
-
+            
             do
             {
                 Console.WriteLine("Wpisz swoj wzrost w (cm): ");
-                height = Double.Parse(Console.ReadLine());
+                bmi.setHeight(Double.Parse(Console.ReadLine()));
                 Console.WriteLine("Wpisz swoja wage w (kg):");
-                weight = Double.Parse(Console.ReadLine());
+                bmi.setWeight(Double.Parse(Console.ReadLine()));
 
                 Console.WriteLine("\nPODSUMOWANIE:");
                 Console.WriteLine("-------------");
 
-                Console.WriteLine("Twoj wzrost wynosi " + Math.Round(height, 1) + " cm, a waga " + Math.Round(weight, 1) + "kg. Czy wszystko sie zgadza?");
+                Console.WriteLine("Twoj wzrost wynosi " + Math.Round(bmi.getHeight(), 1) + " cm, a waga " + Math.Round(bmi.getWeight(), 1) + "kg. Czy wszystko sie zgadza?");
                 Console.WriteLine("Jesli chcesz wpisac swoje dane od poczatku wpisz (N), jesli nie, nacisnij (ENTER)");
-                menu = Console.ReadLine().ToUpper();
+                
 
-            } while (menu == "N");
+            } while (Console.ReadLine().ToUpper() == "N");
 
             // Obliczenia BMI
 
-            height = height / 100;
-            BMI = weight / Math.Pow(height, 2);
+            bmi.setHeight(bmi.getHeight() / 100);
+            bmi.setResult(bmi.getWeight() / Math.Pow(bmi.getHeight(), 2));
 
             // Określanie BMI
 
-            if (BMI < 18.5)
+            if (bmi.getResult() < 18.5)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(BMI, 2) + " co swiadczy o niedowadze!");
+                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o niedowadze!");
             }
-            else if (BMI >= 18.5 & BMI <= 24.9)
+            else if (bmi.getResult() >= 18.5 & bmi.getResult() <= 24.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(BMI, 2) + " co swiadczy o prawidlowej masie ciala.");
+                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o prawidlowej masie ciala.");
             }
-            else if (BMI >= 25 & BMI <= 29.9)
+            else if (bmi.getResult() >= 25 & bmi.getResult() <= 29.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(BMI, 2) + " co swiadczy o nadwadze!");
+                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o nadwadze!");
             }
-            else if (BMI >= 30 & BMI <= 34.9)
+            else if (bmi.getResult() >= 30 & bmi.getResult() <= 34.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(BMI, 2) + " co swiadczy o otylosci I stopnia!");
+                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci I stopnia!");
             }
-            else if (BMI >= 35 & BMI <= 39.9)
+            else if (bmi.getResult() >= 35 & bmi.getResult() <= 39.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(BMI, 2) + " co swiadczy o otylosci II stopnia!!");
+                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci II stopnia!!");
             }
-            else if (BMI >= 40)
+            else if (bmi.getResult() >= 40)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(BMI, 2) + " co swiadczy o otylosci III stopnia!!!");
+                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci III stopnia!!!");
             }
         }
 
