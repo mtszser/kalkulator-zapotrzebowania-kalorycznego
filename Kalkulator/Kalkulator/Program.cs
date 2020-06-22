@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Dynamic;
 
 namespace Kalkulator
 {
@@ -26,6 +27,7 @@ namespace Kalkulator
         }
         public double getResult()
         {
+
             return result;
         }
         public void setWeight(double weight)
@@ -50,6 +52,30 @@ namespace Kalkulator
                     + "\notyłość III stopnia: powyżej 40";
         }
 
+    }
+    class BMR : BMI
+    {
+
+        double activity;
+        private int age;
+        private double result;
+
+        public double getActivity()
+        {
+            return activity;
+        }
+        public int getAge()
+        {
+            return age;
+        }
+        public void setActivity(double activity)
+        {
+            this.activity = activity;
+        }
+        public void setAge(int age)
+        {
+            this.age = age;
+        }
     }
 
     class Program
@@ -123,21 +149,13 @@ namespace Kalkulator
 
         static void BMR()
         {
-            double weight;
-            int age;
-            double height;
-            string sex;
-            string menu = "";
-            double activity = 0;
-            double BMR = 0;
-            double TDEE = 0;
-            
-
+            BMR bmr = new BMR();
 
             // Poczatek i podstawowe informacje
 
             Console.WriteLine("\nKALKULATOR ZAPOTRZEBOWANIA KALORYCZNEGO!");
-            Console.WriteLine("Kalkulator BMR oblicza ilosc kalorii jaka powinienes/as spozywac w ciagu dnia, zeby podstrzymac podstawowe funkcje zyciowe." +
+            Console.WriteLine("Kalkulator BMR oblicza ilosc kalorii jaka powinienes/as spozywac w ciagu dnia," +
+                "\nzeby podstrzymac podstawowe funkcje zyciowe." +
                 "\nKalkulator TDEE oblicza ilosc kalorii jaka powinienes/as spozywac po uwzglednieniu Twojej aktywnosci ");
             Console.WriteLine("------------------------------------------------------------------");
 
@@ -146,33 +164,40 @@ namespace Kalkulator
             do
             {
                 Console.WriteLine("\nPodaj swoja plec, (M) jako mezczyzna lub (K) jako kobieta: ");
-                sex = Console.ReadLine().ToUpper();
+
+                string sex = (Console.ReadLine().ToUpper());
+
                 if (sex == "M")
                 {
-                    sex = "mezczyzna";
+                    bmr.setSex("mezczyzna");
                 }
                 else if(sex == "K")
                 {
-                    sex = "kobieta";
+                    bmr.setSex("kobieta");
                 }
+                else
+                {
+                    Console.WriteLine("\nWPISALES NIEPRAWIDLOWE DANE!");
+                    BMR();
+                };
                 Console.WriteLine("Wpisz swoja wage w (kg): ");
-                weight = Double.Parse(Console.ReadLine());
+                bmr.setWeight(Double.Parse(Console.ReadLine()));
                 Console.WriteLine("Podaj swoj wiek w (latach): ");
-                age = int.Parse(Console.ReadLine());
+                bmr.setAge(int.Parse(Console.ReadLine()));
                 Console.WriteLine("Podaj swoj wzrost w (cm): ");
-                height = Double.Parse(Console.ReadLine());
+                bmr.setHeight(Double.Parse(Console.ReadLine()));
 
                 Console.WriteLine("\nPODSUMOWANIE:");
                 Console.WriteLine("-------------");
 
-                Console.WriteLine($"Twoja plec to {sex}, ważysz {weight} kg, masz {age} lat(a) oraz Twoj wzrost wynosi {height} cm.");
+                Console.WriteLine($"Twoja plec to {bmr.getSex()}, ważysz {Math.Round(bmr.getWeight())} kg, masz {bmr.getAge()} lat(a) oraz Twoj wzrost wynosi {Math.Round(bmr.getHeight())} cm.");
                 Console.WriteLine("Czy wszystko sie zgadza? Jesli chcesz wpisac swoje dane od poczatku wpisz (N), \njeśli nie, wpisz cokolwiek lub wciśnij (ENTER)");
-                menu = Console.ReadLine().ToUpper();
+                
 
-            } while (menu == "N");
+            } while (Console.ReadLine().ToUpper() != "");
 
             // Okreslanie aktywnosci dla poszczegolnej
-            if (sex == "mezczyzna")
+            if (bmr.getSex() == "mezczyzna")
             {
                 do
                 {
@@ -184,34 +209,38 @@ namespace Kalkulator
                         "\n3) Przy aktywnym trybie życia(srednio fizyczna praca/ aktywność 3-5x w tygodniu)." + 
                         "\n4) Przy bardzo aktywnym trybie życia(ciezka fizyczna praca/ aktywność 6-7x w tygodniu." +
                         "\n5) Przy ekstremalnie aktywnym trybie zycia(bardzo ciezka fizyczna praca / cwiczenie nawet kilka razy dziennie.");
+                    bmr.setActivity(Double.Parse(Console.ReadLine()));
 
-                    activity = Double.Parse(Console.ReadLine());
-                    if (activity == 1)
+                    switch (bmr.getActivity())
                     {
-                        activity = 1.2;
+                        case 1:
+                            bmr.setActivity(1.2);
+                            break;
+                        case 2:
+                            bmr.setActivity(1.375);
+                            break;
+                        case 3:
+                            bmr.setActivity(1.55);
+                            break;
+                        case 4:
+                            bmr.setActivity(1.725);
+                            break;
+                        case 5:
+                            bmr.setActivity(1.9);
+                            break;
                     }
-                    else if (activity == 2)
-                    {
-                        activity = 1.375;
-                    }
-                    else if (activity == 3)
-                    {
-                        activity = 1.55;
-                    }
-                    else if (activity == 4)
-                    {
-                        activity = 1.725;
-                    }
-                    else if (activity == 5)
-                    {
-                        activity = 1.9;
-                    }
+
+                    // Podstawienie do wzoru i obliczenie BMR za pomocą wzoru Mifflina
+                    // PPM(mężczyźni) = (10 x masa ciała[kg])+(6,25 x wzrost[cm])-(5 x[wiek]) +5
+
+                    bmr.setResult((10 * bmr.getWeight()) + (6.25 * bmr.getHeight()) - (5 * bmr.getAge()) + 5);
+
+
 
                     Console.WriteLine("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N).");
-                    menu = Console.ReadLine().ToUpper();
-                } while(menu == "N");
+                } while(Console.ReadLine().ToUpper() != "");
             }
-            else if (sex == "kobieta")
+            else if (bmr.getSex() == "kobieta")
             {
                 do
                 {
@@ -223,51 +252,45 @@ namespace Kalkulator
                         "\n3) Przy aktywnym trybie życia(średnio fizyczna praca/ aktywnosc 3-5x w tygodniu)." + 
                         "\n4) Przy bardzo aktywnym trybie życia(ciezkie cwiczenia/ aktywność 6-7x w tygodniu.");
 
-                    activity = Double.Parse(Console.ReadLine());
-                    if (activity == 1)
+                    bmr.setActivity(Double.Parse(Console.ReadLine()));
+
+                    switch(bmr.getActivity())
                     {
-                        activity = 1.1;
+                        case 1:
+                            bmr.setActivity(1.1);
+                            break;
+                        case 2:
+                            bmr.setActivity(1.275);
+                            break;
+                        case 3:
+                            bmr.setActivity(1.35);
+                            break;
+                        case 4:
+                            bmr.setActivity(1.525);
+                            break;
+                        default:
+                            Console.WriteLine("WYBIERZ ODPOWIEDNIA WARTOSC!");
+                            break;
+
                     }
-                    else if (activity == 2)
-                    {
-                        activity = 1.275;
-                    }
-                    else if (activity == 3)
-                    {
-                        activity = 1.35;
-                    }
-                    else if (activity == 4)
-                    {
-                        activity = 1.525;
-                    }
+                    // Podstawienie do wzoru i obliczenie BMR za pomocą wzoru Mifflina
+                    // PPM (kobiety) =  (10 x masa ciała[kg])+(6,25 x wzrost[cm])-(5 x [wiek]) – 161
+                    bmr.setResult((10 * bmr.getWeight()) + (6.25 * bmr.getHeight()) - (5 * bmr.getAge()) - 161);
 
                     Console.WriteLine("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N).");
-                    menu = Console.ReadLine().ToUpper();
-                } while(menu == "N") ;
+                } while(Console.ReadLine().ToUpper() != "");
             }
 
-            // Podstawienie do wzoru i obliczenie BMR za pomocą wzoru Mifflina
-            // PPM (kobiety) =  (10 x masa ciała[kg])+(6,25 x wzrost[cm])-(5 x [wiek]) – 161
-            // PPM(mężczyźni) = (10 x masa ciała[kg])+(6,25 x wzrost[cm])-(5 x[wiek]) +5
-
-            if(sex == "kobieta")
-            {
-                BMR = (10 * weight) + (6.25 * height) - (5 * age) - 161;
-            }
-            else if(sex == "mezczyzna")
-            {
-                BMR = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-            }
 
             Console.WriteLine("\nA teraz oblicze Twoje BMR:");
             Console.WriteLine("..TRWA LICZENIE..");
-            Console.WriteLine("\n\nTwoje BMR wynosi: " + Math.Round(BMR, 2) + " kcal.");
+            Console.WriteLine("\n\nTwoje BMR wynosi: " + Math.Round(bmr.getResult(), 2) + " kcal.");
             Console.WriteLine("A teraz dodam do tego wspolczynnik aktywnosci, ktory podales/as wczesniej.");
 
             // wzor na TDEE
-            TDEE = BMR * activity;
+            bmr.setResult(bmr.getResult() * bmr.getActivity());
 
-            Console.WriteLine("\nTwoje TDEE wynosi " + Math.Round(TDEE, 2) + " kcal. \nTDEE - Jest to ilosc kalorii jaka powinienes/as spozywac w ciagu dnia zakladajac Twoja aktywnosc");
+            Console.WriteLine("\nTwoje TDEE wynosi " + Math.Round(bmr.getResult(), 2) + " kcal. \nTDEE - Jest to ilosc kalorii jaka powinienes/as spozywac w ciagu dnia zakladajac Twoja aktywnosc");
 
         }
         static void Main(string[] args)
