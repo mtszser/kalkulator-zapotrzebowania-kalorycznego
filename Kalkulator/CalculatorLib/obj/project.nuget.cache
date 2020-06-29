@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "sREhJiC2nRX9FXASKuHhBK8fUdZOXk1CbwCGpJprpqabBQZhIVHVwGEcoKYJr17Mr2Ufh9xwweAEJ7wWT38tVw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mtszp\\source\\repos\\mtszser\\kalkulator-zapotrzebowania-kalorycznego\\Kalkulator\\CalculatorLib\\CalculatorLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mtszp\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\mtszp\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

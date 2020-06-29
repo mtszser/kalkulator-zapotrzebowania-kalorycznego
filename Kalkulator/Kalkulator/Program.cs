@@ -1,82 +1,14 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
+using CalculatorLib;
 using System.ComponentModel.Design;
+using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
 namespace Kalkulator
 {
-    class BMI
-    {
-        private double weight;
-        private double height;
-        private string sex;
-        private double result;
-        
-        
-
-        public double getWeight()
-        {
-            return weight;
-        }
-        public double getHeight()
-        {
-            return height;
-        }
-        public string getSex()
-        {
-            return sex;
-        }
-        public double getResult()
-        {
-
-            return result;
-        }
-        public void setWeight(double weight)
-        {
-            this.weight = weight;
-        }
-        public void setHeight(double height)
-        {
-            this.height = height;
-        }
-        public void setSex(string sex)
-        {
-            this.sex = sex;
-        }
-        public void setResult(double result)
-        {
-            this.result = result;
-        }
-        public string getInfo()
-        {
-            return "Niedowaga: poniżej 18,5" + "\nPrawidłowa masa ciała: 18,5-24,9" + "\nNadwaga: 25,0-29,9" + "\notyłość I stopnia: 30,0-34,9" + "\notyłość II stopnia: 35,0-39,9"
-                    + "\notyłość III stopnia: powyżej 40";
-        }
-
-    }
-    class BMR : BMI
-    {
-
-        double activity;
-        private int age;
-        private double result;
-
-        public double getActivity()
-        {
-            return activity;
-        }
-        public int getAge()
-        {
-            return age;
-        }
-        public void setActivity(double activity)
-        {
-            this.activity = activity;
-        }
-        public void setAge(int age)
-        {
-            this.age = age;
-        }
-    }
 
     class Program
     {
@@ -120,7 +52,7 @@ namespace Kalkulator
             bmi.setResult(bmi.getWeight() / Math.Pow(bmi.getHeight(), 2));
 
             // Określanie BMI
-
+            
             if (bmi.getResult() < 18.5)
             {
                 Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o niedowadze!");
@@ -181,11 +113,13 @@ namespace Kalkulator
                     BMR();
                 };
                 Console.WriteLine("Wpisz swoja wage w (kg): ");
-                bmr.setWeight(Double.Parse(Console.ReadLine()));
+                bmr.setWeight(double.Parse(Console.ReadLine()));
+
                 Console.WriteLine("Podaj swoj wiek w (latach): ");
                 bmr.setAge(int.Parse(Console.ReadLine()));
+
                 Console.WriteLine("Podaj swoj wzrost w (cm): ");
-                bmr.setHeight(Double.Parse(Console.ReadLine()));
+                bmr.setHeight(double.Parse(Console.ReadLine()));
 
                 Console.WriteLine("\nPODSUMOWANIE:");
                 Console.WriteLine("-------------");
@@ -196,7 +130,9 @@ namespace Kalkulator
 
             } while (Console.ReadLine().ToUpper() != "");
 
-            // Okreslanie aktywnosci dla poszczegolnej
+            // Okreslanie aktywnosci dla poszczegolnej płci
+            //Przypisywanie aktywnosci dla mezczyzny
+
             if (bmr.getSex() == "mezczyzna")
             {
                 do
@@ -209,7 +145,9 @@ namespace Kalkulator
                         "\n3) Przy aktywnym trybie życia(srednio fizyczna praca/ aktywność 3-5x w tygodniu)." + 
                         "\n4) Przy bardzo aktywnym trybie życia(ciezka fizyczna praca/ aktywność 6-7x w tygodniu." +
                         "\n5) Przy ekstremalnie aktywnym trybie zycia(bardzo ciezka fizyczna praca / cwiczenie nawet kilka razy dziennie.");
-                    bmr.setActivity(Double.Parse(Console.ReadLine()));
+                    bmr.setActivity(double.Parse(Console.ReadLine()));
+
+                    //przypisywanie wartosci do wybranej aktywnosci
 
                     switch (bmr.getActivity())
                     {
@@ -240,6 +178,9 @@ namespace Kalkulator
                     Console.WriteLine("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N).");
                 } while(Console.ReadLine().ToUpper() != "");
             }
+
+            //Przypisywanie aktywnosci dla kobiety
+
             else if (bmr.getSex() == "kobieta")
             {
                 do
@@ -252,7 +193,9 @@ namespace Kalkulator
                         "\n3) Przy aktywnym trybie życia(średnio fizyczna praca/ aktywnosc 3-5x w tygodniu)." + 
                         "\n4) Przy bardzo aktywnym trybie życia(ciezkie cwiczenia/ aktywność 6-7x w tygodniu.");
 
-                    bmr.setActivity(Double.Parse(Console.ReadLine()));
+                    bmr.setActivity(double.Parse(Console.ReadLine()));
+
+                    //przypisywanie wartosci do wybranej aktywnosci
 
                     switch(bmr.getActivity())
                     {
@@ -288,6 +231,7 @@ namespace Kalkulator
             Console.WriteLine("A teraz dodam do tego wspolczynnik aktywnosci, ktory podales/as wczesniej.");
 
             // wzor na TDEE
+
             bmr.setResult(bmr.getResult() * bmr.getActivity());
 
             Console.WriteLine("\nTwoje TDEE wynosi " + Math.Round(bmr.getResult(), 2) + " kcal. \nTDEE - Jest to ilosc kalorii jaka powinienes/as spozywac w ciagu dnia zakladajac Twoja aktywnosc");
@@ -302,7 +246,7 @@ namespace Kalkulator
             do
             {
                 Console.WriteLine("\nPROJEKT APLIKACJI KONSOLOWEJ C# ");
-                Console.WriteLine("\nWpisz (1) jeśli chcesz przejść do kalkulatora BMI: " + "\nWpisz (2) jeśli chcesz przejść do kalkulatora BMR + TDEE: " + "\nWpisz (0) jesli chcesz wyjsc: ");
+                Console.WriteLine("\nWpisz (1) jeśli chcesz przejść do kalkulatora BMI: " + "\nWpisz (2) jeśli chcesz przejść do kalkulatora BMR + TDEE: " + "\n\n\nWpisz (0) jesli chcesz wyjsc: ");
                 menu = Console.ReadLine();
                 if (menu == "1")
                 {

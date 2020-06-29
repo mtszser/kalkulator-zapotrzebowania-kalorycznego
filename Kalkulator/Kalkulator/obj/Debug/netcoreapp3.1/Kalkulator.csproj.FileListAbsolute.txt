@@ -11,3 +11,6 @@ C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalk
 C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.dll
 C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.pdb
 C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.genruntimeconfig.cache
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\CalculatorLib.dll
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\bin\Debug\netcoreapp3.1\CalculatorLib.pdb
+C:\Users\mtszp\source\repos\mtszser\kalkulator-zapotrzebowania-kalorycznego\Kalkulator\Kalkulator\obj\Debug\netcoreapp3.1\Kalkulator.csproj.CopyComplete
