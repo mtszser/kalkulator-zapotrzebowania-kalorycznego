@@ -4,15 +4,20 @@ using System.Text;
 
 namespace CalculatorLib
 {
-    //Dziedziczenie BMI i ustawianie setów i getów
+    //Dziedziczenie BMI
     public class BMR : BMI
     {
-        double activity;
+        private string gender;
+        private double activity;
         private int age;
 
         public double getActivity()
         {
             return activity;
+        }
+        public string getGender()
+        {
+            return gender;
         }
         public int getAge()
         {
@@ -21,6 +26,10 @@ namespace CalculatorLib
         public void setActivity(double activity)
         {
             this.activity = activity;
+        }
+        public void setGender(string gender)
+        {
+            this.gender = gender;
         }
         public void setAge(int age)
         {

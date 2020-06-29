@@ -20,7 +20,8 @@ namespace Kalkulator
 
             Console.WriteLine("\nKALKULATOR BMI!");
             Console.WriteLine("Kalkulator BMI sprawdza proporcje miedzy Twoja masa ciala, a wzrostem i określa czy waga jest prawidłowa.");
-            Console.WriteLine("Licznik BMI podaje wynik według podstawowej kwalifikacji dla dorosłych mężczyzn i kobiet." + "\nChcesz wiedzieć więcej? Jeśli tak, wpisz (T), jeśli nie, wpisz cokolwiek lub wciśnij (ENTER)");
+            Console.Write("Licznik BMI podaje wynik według podstawowej kwalifikacji dla dorosłych mężczyzn i kobiet.");
+            Console.Write("\n\nChcesz wiedzieć więcej? Jeśli tak, wpisz (T), jeśli nie, wpisz cokolwiek lub wciśnij (ENTER): ");
             
             if (Console.ReadLine().ToUpper() == "T")
             {
@@ -32,16 +33,16 @@ namespace Kalkulator
             
             do
             {
-                Console.WriteLine("Wpisz swoj wzrost w (cm): ");
+                Console.Write("Wpisz swoj wzrost w (cm): ");
                 bmi.setHeight(Double.Parse(Console.ReadLine()));
-                Console.WriteLine("Wpisz swoja wage w (kg):");
+                Console.Write("Wpisz swoja wage w (kg): ");
                 bmi.setWeight(Double.Parse(Console.ReadLine()));
 
                 Console.WriteLine("\nPODSUMOWANIE:");
                 Console.WriteLine("-------------");
 
                 Console.WriteLine("Twoj wzrost wynosi " + Math.Round(bmi.getHeight(), 1) + " cm, a waga " + Math.Round(bmi.getWeight(), 1) + "kg. Czy wszystko sie zgadza?");
-                Console.WriteLine("Jesli chcesz wpisac swoje dane od poczatku wpisz (N), jesli nie, nacisnij (ENTER)");
+                Console.Write("Jesli chcesz wpisac swoje dane od poczatku wpisz (N), jesli nie, nacisnij (ENTER): ");
                 
 
             } while (Console.ReadLine().ToUpper() == "N");
@@ -55,27 +56,27 @@ namespace Kalkulator
             
             if (bmi.getResult() < 18.5)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o niedowadze!");
+                Console.WriteLine("\nTwoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o niedowadze!");
             }
             else if (bmi.getResult() >= 18.5 & bmi.getResult() <= 24.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o prawidlowej masie ciala.");
+                Console.WriteLine("\nTwoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o prawidlowej masie ciala.");
             }
             else if (bmi.getResult() >= 25 & bmi.getResult() <= 29.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o nadwadze!");
+                Console.WriteLine("\nTwoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o nadwadze!");
             }
             else if (bmi.getResult() >= 30 & bmi.getResult() <= 34.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci I stopnia!");
+                Console.WriteLine("\nTwoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci I stopnia!");
             }
             else if (bmi.getResult() >= 35 & bmi.getResult() <= 39.9)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci II stopnia!!");
+                Console.WriteLine("\nTwoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci II stopnia!!");
             }
             else if (bmi.getResult() >= 40)
             {
-                Console.WriteLine("Twoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci III stopnia!!!");
+                Console.WriteLine("\nTwoje BMI wynosi " + Math.Round(bmi.getResult(), 2) + " co swiadczy o otylosci III stopnia!!!");
             }
         }
 
@@ -95,37 +96,37 @@ namespace Kalkulator
 
             do
             {
-                Console.WriteLine("\nPodaj swoja plec, (M) jako mezczyzna lub (K) jako kobieta: ");
+                Console.Write("\nPodaj swoja plec, (M) jako mezczyzna lub (K) jako kobieta: ");
 
                 string sex = (Console.ReadLine().ToUpper());
 
                 if (sex == "M")
                 {
-                    bmr.setSex("mezczyzna");
+                    bmr.setGender("mezczyzna");
                 }
                 else if(sex == "K")
                 {
-                    bmr.setSex("kobieta");
+                    bmr.setGender("kobieta");
                 }
                 else
                 {
                     Console.WriteLine("\nWPISALES NIEPRAWIDLOWE DANE!");
                     BMR();
                 };
-                Console.WriteLine("Wpisz swoja wage w (kg): ");
+                Console.Write("Wpisz swoja wage w (kg): ");
                 bmr.setWeight(double.Parse(Console.ReadLine()));
 
-                Console.WriteLine("Podaj swoj wiek w (latach): ");
+                Console.Write("Podaj swoj wiek w (latach): ");
                 bmr.setAge(int.Parse(Console.ReadLine()));
 
-                Console.WriteLine("Podaj swoj wzrost w (cm): ");
+                Console.Write("Podaj swoj wzrost w (cm): ");
                 bmr.setHeight(double.Parse(Console.ReadLine()));
 
                 Console.WriteLine("\nPODSUMOWANIE:");
                 Console.WriteLine("-------------");
 
-                Console.WriteLine($"Twoja plec to {bmr.getSex()}, ważysz {Math.Round(bmr.getWeight())} kg, masz {bmr.getAge()} lat(a) oraz Twoj wzrost wynosi {Math.Round(bmr.getHeight())} cm.");
-                Console.WriteLine("Czy wszystko sie zgadza? Jesli chcesz wpisac swoje dane od poczatku wpisz (N), \njeśli nie, wpisz cokolwiek lub wciśnij (ENTER)");
+                Console.WriteLine($"Twoja plec to {bmr.getGender()}, ważysz {Math.Round(bmr.getWeight()), 2} kg, masz {bmr.getAge()} lat(a) oraz Twoj wzrost wynosi {Math.Round(bmr.getHeight()), 2} cm.");
+                Console.Write("Czy wszystko sie zgadza? Jesli chcesz wpisac swoje dane od poczatku wpisz (N), \njeśli nie, wpisz cokolwiek lub wciśnij (ENTER): ");
                 
 
             } while (Console.ReadLine().ToUpper() != "");
@@ -133,7 +134,7 @@ namespace Kalkulator
             // Okreslanie aktywnosci dla poszczegolnej płci
             //Przypisywanie aktywnosci dla mezczyzny
 
-            if (bmr.getSex() == "mezczyzna")
+            if (bmr.getGender() == "mezczyzna")
             {
                 do
                 {
@@ -175,13 +176,13 @@ namespace Kalkulator
 
 
 
-                    Console.WriteLine("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N).");
+                    Console.Write("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N): ");
                 } while(Console.ReadLine().ToUpper() != "");
             }
 
             //Przypisywanie aktywnosci dla kobiety
 
-            else if (bmr.getSex() == "kobieta")
+            else if (bmr.getGender() == "kobieta")
             {
                 do
                 {
@@ -220,7 +221,7 @@ namespace Kalkulator
                     // PPM (kobiety) =  (10 x masa ciała[kg])+(6,25 x wzrost[cm])-(5 x [wiek]) – 161
                     bmr.setResult((10 * bmr.getWeight()) + (6.25 * bmr.getHeight()) - (5 * bmr.getAge()) - 161);
 
-                    Console.WriteLine("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N).");
+                    Console.Write("\nCzy wszystko sie zgadza? Jesli tak, wpisz cokolwiek lub wcisnij (ENTER), jesli nie, wpisz (N): ");
                 } while(Console.ReadLine().ToUpper() != "");
             }
 
@@ -237,6 +238,28 @@ namespace Kalkulator
             Console.WriteLine("\nTwoje TDEE wynosi " + Math.Round(bmr.getResult(), 2) + " kcal. \nTDEE - Jest to ilosc kalorii jaka powinienes/as spozywac w ciagu dnia zakladajac Twoja aktywnosc");
 
         }
+        static void Intake()
+        {
+            Water water = new Water();
+            Console.WriteLine("\nKalkulator minimalnego spożycia wody dla danej osoby: ");
+            Console.Write("Wpisz swoja wage w (kg): ");
+            water.setWeight(double.Parse(Console.ReadLine()));
+            Console.Write("Wpisz dzienna czynna aktywnosc fizyczna w minutach: ");
+            water.setWorkout(double.Parse(Console.ReadLine()));
+            if (water.getWorkout() == 0)
+            {
+                Console.WriteLine("\nMINIMALNA DZIENNA AKTYWNOŚĆ FIZYCZNA MUSI WYNOSIĆ 1!");
+                Intake();
+            }
+            else if (water.getWorkout() == 1)
+            {
+                water.setResult(water.getWeight() * 35);
+            }
+            else
+                water.setResult((water.getWeight() * 35) + (water.getWorkout() * 12.5));
+
+            Console.WriteLine("\nMinimalna ilosc wody uwzgledniajac Twoja aktywnosc fizyczna wynosi: " + Math.Round(water.getResult(), 2) + "ml.");
+        }
         static void Main(string[] args)
         {
             string menu = "";
@@ -246,15 +269,23 @@ namespace Kalkulator
             do
             {
                 Console.WriteLine("\nPROJEKT APLIKACJI KONSOLOWEJ C# ");
-                Console.WriteLine("\nWpisz (1) jeśli chcesz przejść do kalkulatora BMI: " + "\nWpisz (2) jeśli chcesz przejść do kalkulatora BMR + TDEE: " + "\n\n\nWpisz (0) jesli chcesz wyjsc: ");
+                Console.WriteLine("\nWpisz (1), jeśli chcesz przejść do kalkulatora BMI.");
+                Console.WriteLine("Wpisz (2), jeśli chcesz przejść do kalkulatora BMR + TDEE.");
+                Console.WriteLine("Wpisz (3), jeśli chcesz przejść do kalkulatora spożywanej wody w ciągu dnia.");
+                Console.WriteLine("Wpisz (0) jesli chcesz wyjsc: ");
+                Console.Write("\nTwój wybór: ");
                 menu = Console.ReadLine();
-                if (menu == "1")
+                if(menu == "1")
                 {
                     BMI();
                 }
-                else if (menu == "2")
+                else if(menu == "2")
                 {
                     BMR();
+                }
+                else if(menu == "3")
+                {
+                    Intake();
                 }
             } while (menu != "0");
                 
